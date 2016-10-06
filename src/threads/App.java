@@ -21,7 +21,7 @@ public class App {
 				
 				
 		//Read through file and find the words
-				while(fileInput.hasNext())
+				while(fileInput.)
 				{
 					//get the next word
 					String nextWord = fileInput.next();
