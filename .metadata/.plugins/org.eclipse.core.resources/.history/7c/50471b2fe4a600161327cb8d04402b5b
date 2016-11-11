@@ -1,0 +1,12 @@
+package testing;
+
+public class Ageingtest {
+
+	public static void main(String[] args) {
+		
+		int i = 2;
+		System.out.println("i.toBinaryString(2<<1)");
+
+	}
+
+}

@@ -1,0 +1,5 @@
+A Turing machine is an abstract machine[1] that manipulates symbols
+on a strip of tape according to a table of rules; to be more exact, it
+is a mathematical model of computation that defines such a device. Despite
+the model's simplicity, given any computer algorithm, a Turing machine can be 
+constructed that is capable of simulating that algorithm's logic.

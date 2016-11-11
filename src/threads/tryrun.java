@@ -8,7 +8,7 @@ public class tryrun {
 	public static void main(String[] args) throws IOException
 	{
 		//Bring in the input file & prepare it for manipulation 
-		FileInputStream fin = new FileInputStream("naruto.txt"); 
+		FileInputStream fin = new FileInputStream("sample.txt"); 
 		Scanner scanner = new Scanner(fin); 
 		
 		//get the number of lines present in the input text file

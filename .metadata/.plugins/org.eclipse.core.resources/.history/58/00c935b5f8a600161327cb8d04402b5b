@@ -1,0 +1,71 @@
+package assignment4;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+public class AgeingAlgoImplementation {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		//Initialize input file into an integer input array
+		Scanner s = new Scanner(new File("input1.txt"));
+		ArrayList<Integer> Input = new ArrayList<Integer>();
+		while (s.hasNext()){
+		Input.add(s.nextInt());}
+		
+		
+		//get number of frames from user				
+		int noOfPageFrames;
+		Scanner sc  = new Scanner(System.in);
+		System.out.println("Enter the number of Page Frames");
+		noOfPageFrames=sc.nextInt();
+		
+		
+		//create and initialize hashmap
+		Map<	Integer, Integer> hm = new HashMap<	Integer, Integer>();
+		for(int i=0;i<noOfPageFrames;i++)
+		{
+			hm.put(0,0);
+		}
+		
+		int pageFault = 0;
+		//check if hashmap contains values
+		for(int i=0;i<Input.size();i++)
+		{
+			if(hm.containsKey(Input.get(i)))
+			{
+				for(Map.Entry<Integer, Integer> entry : hm.entrySet())
+				{
+					hm.put(entry.getKey(), entry.getValue() - 1);
+				}//for loop decrements all the values in the hash map
+				hm.put(Input.get(i), hm.get(Input.get(i)) + 2);//increment the key hit by 1 + 1
+			}
+			else
+			{
+				pageFault++;
+				Entry<Integer, Integer> min = null;
+				for (Entry<Integer, Integer> entry1 : hm.entrySet()) {
+				    if (min == null || min.getValue() > entry1.getValue()) {
+				        min = entry1;
+				    }//if statement to get lowest key value pair ends here
+				}//for loop to find minimum value in hashmap ends
+				hm.remove(min.getKey())
+				hm.put(Input.get(i), 0);
+			}	
+			
+					
+		}//for loop ends
+		System.out.println("Page misses == " + pageFault);
+		
+		
+	
+		sc.close();
+		s.close();
+	}
+
+}

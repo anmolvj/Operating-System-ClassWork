@@ -1,7 +1,8 @@
 package threads;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.io.*;
+import java.util.concurrent.TimeUnit;
+
 
 public class test33 {
 	
@@ -10,7 +11,7 @@ public static void main(String[] args) throws IOException, Exception {
 	//try block begins
 	try{
 		//Bring in the input file & prepare it for manipulation 
-		FileInputStream fin = new FileInputStream("naruto.txt"); 
+		FileInputStream fin = new FileInputStream("sample.txt"); 
 		Scanner scanner = new Scanner(fin);
 		
 		//Initialize number of lines variable
@@ -35,17 +36,18 @@ public static void main(String[] args) throws IOException, Exception {
 		//An array of class MyThreadClass is created that extends the Thread class
 		MyThreadClass[] thread = new MyThreadClass[numberOfLines];
 		
-		//Starting Individual threads
-		File f = new File("naruto.txt");
+		//Create new scanner object
+		File f = new File("sample.txt");
 		Scanner s1 = new Scanner(f);
-        int t=0;
         
+		//Creating Individual threads
         for(int i=0;i<numberOfLines;i++)
         {
         	thread[i] = new MyThreadClass(s1.nextLine());
         	
         }
         
+        //Starting individual threads
         for(int i=0;i<numberOfLines;i++)
         {
         	
@@ -59,11 +61,10 @@ public static void main(String[] args) throws IOException, Exception {
         	
         	thread[i].join();
         	
-        }//while loop ends
+        }//FOR loop ends
 		
       
-	
-		//Main Hash Map Created 
+        //Main Hash Map Created 
 		HashMap<String,Integer> mainMap = new HashMap<String, Integer>();
 		
 		//Put <Key,Value> data into MAIN Hash Map
@@ -80,9 +81,9 @@ public static void main(String[] args) throws IOException, Exception {
 				{
 					mainMap.put(key, 1);
 				}
-			}//Inner for loop ends
+			}//Inner FOR loop ends
 			
-		}//Main for loop ends
+		}//Main FOR loop ends
 		
 		System.out.println("FINAL FREQUENCY OF EACH WORD IN THE INPUT TEXT FILE:");
 		for(String s: mainMap.keySet())
@@ -92,8 +93,9 @@ public static void main(String[] args) throws IOException, Exception {
 			
 			System.out.println( key + "-" + value );
 		}
-//		System.out.println("Final List of frequency of each word in the given file is as follows:-" + mainMap.entrySet());
+
 		
+		s1.close();
 		scanner.close();
 		fin.close();
 		}//try block ends
@@ -127,7 +129,7 @@ public static class MyThreadClass extends Thread {
 				//Filter The Incoming String
 				//Split into words
 				//Put words into a String Array
-				String[] stringArray = string.split("\\s+");
+				String[] stringArray = string.replaceAll("\\s+", " ").split(" ");
 				
 				
 				

@@ -9,7 +9,7 @@ public class test1 {
 		System.out.println("Hello World");
 		
 		//Bring in the input file & prepare it for manipulation 
-		FileInputStream fin = new FileInputStream("naruto.txt"); 
+		FileInputStream fin = new FileInputStream("sample.txt"); 
 		Scanner scanner = new Scanner(fin);
 		
 		//Initialize number of lines variable and create array-list to store each line
